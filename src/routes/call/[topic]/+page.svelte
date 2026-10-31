@@ -20,8 +20,6 @@
     ShieldCheck,
     Shuffle,
     SlidersHorizontal,
-    Video,
-    VideoOff,
     Volume2,
     X
   } from '@lucide/svelte';
@@ -59,7 +57,6 @@
   let reportReason = $state('Ujaran kebencian');
   let reportDetail = $state('');
   let reporting = $state(false);
-  let cameraBusy = $state(false);
   let previewStarting = $state(false);
   let elapsed = $state(0);
   let chatLog = $state<HTMLDivElement>();
@@ -180,23 +177,6 @@
     muted = !muted;
     voice()?.setMuted(muted);
   }
-  async function toggleCamera() {
-    cameraBusy = true;
-    actionError = '';
-    try {
-      if (configured) await room.toggleCamera();
-      else if (previewVoice.camera) {
-        previewVoice.disableCamera();
-        roomState.local = null;
-      } else {
-        roomState.local = await previewVoice.enableCamera();
-      }
-    } catch {
-      actionError = 'Kamera belum dapat dibuka. Periksa izin kamera di browser.';
-    } finally {
-      cameraBusy = false;
-    }
-  }
   async function next() {
     actionError = '';
     listen = false;
@@ -242,7 +222,7 @@
 </script>
 
 <svelte:head
-  ><title>{topic ? `${topic.title} — ` : ''}Ruang debat · Callbate</title><meta
+  ><title>{topic ? `${topic.title} — ` : ''}Ruang debat · debatly.</title><meta
     name="robots"
     content="noindex"
   /></svelte:head
@@ -270,7 +250,7 @@
       </div>
       {#if !configured}<div class="preview-banner">
           <span><span class="live-dot"></span> Ruang pratinjau</span> Belum terhubung ke pengguna lain.
-          Coba mic, kamera, dan pengubah suara secara lokal.
+          Coba mikrofon dan pengubah suara secara lokal.
         </div>{/if}
       <div class="room-layout">
         <div class="video-column">
@@ -305,12 +285,12 @@
                 <h2>{configured ? statusLabel : 'Ruang untuk suara yang berbeda.'}</h2>
                 <p>
                   {roomState.status === 'connected'
-                    ? 'Kamera lawan bicara sedang nonaktif. Dengarkan perspektifnya.'
+                    ? 'Dengarkan perspektif lawan bicara.'
                     : roomState.status === 'searching'
                       ? `Menunggu peserta ${side === 'pro' ? 'kontra' : 'pro'} pada topik yang sama. Kamu bisa membatalkan kapan saja.`
                       : !configured
-                        ? 'Kamera boleh mati. Percakapan tetap hidup.'
-                        : 'Mikrofon diperlukan. Kamera selalu menjadi pilihanmu.'}
+                        ? 'Percakapan hidup lewat suara.'
+                        : 'Siapkan mikrofon untuk memulai percakapan.'}
                 </p>
                 {#if ['idle', 'error'].includes(roomState.status) && configured}<button
                     class="button primary"
@@ -332,7 +312,7 @@
               <span><ShieldCheck size={13} /> Anonim & setara</span
               >{#if roomState.status === 'connected'}<span class="call-timer"
                   ><span class="live-dot"></span>{time}</span
-                >{:else}<span><VideoOff size={13} /> Kamera opsional</span>{/if}
+                >{:else}<span><AudioLines size={13} /> Obrolan suara</span>{/if}
             </div>
           </div>
           <div class="video-panel local-panel">
@@ -354,10 +334,10 @@
                 <span class="local-avatar">{muted ? '…' : 'K'}</span>
                 <div>
                   <strong>Suaramu sudah cukup.</strong><span
-                    >Nyalakan kamera hanya jika kamu nyaman.</span
+                    >Sampaikan perspektifmu lewat suara.</span
                   >
                 </div>
-                <VideoOff size={21} />
+                <AudioLines size={21} />
               </div>{/if}
           </div>
         </div>
@@ -435,16 +415,6 @@
             aria-pressed={!muted}
             >{#if muted}<MicOff size={20} />{:else}<Mic size={20} />{/if}<span
               >{muted ? 'Mic mati' : 'Mikrofon'}</span
-            ></button
-          ><button
-            class="control-button"
-            class:off={!roomState.local}
-            onclick={toggleCamera}
-            disabled={!micReady || cameraBusy}
-            aria-pressed={Boolean(roomState.local)}
-            aria-label={roomState.local ? 'Matikan kamera' : 'Nyalakan kamera'}
-            >{#if roomState.local}<Video size={20} />{:else}<VideoOff size={20} />{/if}<span
-              >{roomState.local ? 'Kamera aktif' : 'Kamera mati'}</span
             ></button
           ><button
             class="control-button"

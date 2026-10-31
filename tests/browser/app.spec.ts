@@ -3,9 +3,10 @@ import { expect, test } from '@playwright/test';
 test('home categories, search, accessible join flow and local media', async ({ page, context }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await context.grantPermissions(['microphone', 'camera']);
+  await context.grantPermissions(['microphone']);
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Beda pandangan.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Match dulu,');
+  await expect(page.getByRole('img', { name: 'debatly.', exact: true }).first()).toBeVisible();
   await expect(page.locator('.topic-card')).toHaveCount(6);
   await page.getByRole('button', { name: 'Ekonomi', exact: true }).click();
   await expect(page.locator('.topic-card')).toHaveCount(1);
@@ -29,11 +30,7 @@ test('home categories, search, accessible join flow and local media', async ({ p
   await page.getByRole('button', { name: 'Dengar suaramu' }).click();
   await expect(page.getByRole('button', { name: 'Hentikan tes' })).toBeVisible();
   await page.getByRole('button', { name: 'Hentikan tes' }).click();
-  await page.getByRole('button', { name: 'Nyalakan kamera', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Matikan kamera', exact: true })).toHaveAttribute(
-    'aria-pressed',
-    'true'
-  );
+  await expect(page.getByRole('button', { name: /kamera/i })).toHaveCount(0);
   await page.getByRole('button', { name: 'Matikan mikrofon', exact: true }).click();
   await expect(
     page.getByRole('button', { name: 'Nyalakan mikrofon', exact: true })

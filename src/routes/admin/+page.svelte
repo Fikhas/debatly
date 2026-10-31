@@ -327,7 +327,7 @@
 </script>
 
 <svelte:head
-  ><title>Dashboard admin · Callbate</title><meta
+  ><title>Dashboard admin · debatly.</title><meta
     name="robots"
     content="noindex,nofollow"
   /></svelte:head
@@ -389,7 +389,7 @@
         <ShieldCheck size={14} /> Akses terbatas untuk admin terdaftar
       </div>
     </main>
-    <p class="login-bottom">Beda suara, tetap setara.</p>
+    <p class="login-bottom">Match dulu, debat kemudian</p>
   </div>
 {:else}
   <div class="admin-page">
@@ -697,7 +697,7 @@
           </section>
         {/if}
         <footer class="admin-footer">
-          Callbate · Ruang pengelola <span>Bangun percakapan yang berarti.</span>
+          debatly. · Ruang pengelola <span>Bangun percakapan yang berarti.</span>
         </footer>
       </main>
     </div>

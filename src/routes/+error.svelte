@@ -4,7 +4,7 @@
   import Logo from '#lib/components/Logo.svelte';
 </script>
 
-<svelte:head><title>{page.status} · Callbate</title></svelte:head>
+<svelte:head><title>{page.status} · debatly.</title></svelte:head>
 <main class="error-page">
   <Logo />
   <div>

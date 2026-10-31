@@ -13,8 +13,7 @@
     Search,
     ShieldCheck,
     SlidersHorizontal,
-    Sparkles,
-    VideoOff
+    Sparkles
   } from '@lucide/svelte';
   import Logo from '#lib/components/Logo.svelte';
   import TopicArt from '#lib/components/TopicArt.svelte';
@@ -83,10 +82,10 @@
 </script>
 
 <svelte:head>
-  <title>Callbate — Beda pandangan. Tetap satu obrolan.</title>
+  <title>debatly. — Match dulu, debat kemudian</title>
   <meta
     name="description"
-    content="Ruang obrolan politik satu lawan satu. Pilih topik, tentukan posisi, dan temukan perspektif baru lewat suara. Kamera selalu opsional."
+    content="Ruang obrolan politik satu lawan satu. Pilih topik, tentukan posisi, dan temukan perspektif baru lewat suara. Diskusi melalui suara."
   />
 </svelte:head>
 
@@ -105,20 +104,7 @@
     <section class="hero container">
       <div class="hero-copy">
         <div class="hero-badge"><span class="live-dot"></span> RUANG UNTUK BEDA PENDAPAT</div>
-        <h1>
-          Beda pandangan.<br />Tetap satu
-          <span class="word-mark"
-            >obrolan<svg viewBox="0 0 300 16" aria-hidden="true"
-              ><path
-                d="M3 11Q140-3 297 8M12 15Q160 2 283 13"
-                stroke="currentColor"
-                stroke-width="3"
-                fill="none"
-                stroke-linecap="round"
-              /></svg
-            ></span
-          >.
-        </h1>
+        <h1>Match dulu,<br /><span class="word-mark">debat kemudian</span></h1>
         <p>
           Keluar dari lingkaran yang selalu setuju denganmu.<br class="desktop-break" /> Pilih isu, ambil
           posisi, dan dengarkan sisi lainnya.
@@ -130,8 +116,8 @@
         </div>
         <div class="hero-features">
           <span><Mic size={15} /> Utamakan suara</span><span
-            ><VideoOff size={16} /> Kamera opsional</span
-          ><span><ShieldCheck size={16} /> Tetap anonim</span>
+            ><ShieldCheck size={16} /> Tetap anonim</span
+          >
         </div>
       </div>
       <div class="hero-visual" aria-label="Ilustrasi dua perspektif yang saling berdialog">
@@ -374,14 +360,14 @@
   <footer class="site-footer container">
     <div>
       <Logo small />
-      <p>Beda suara, tetap setara.</p>
+      <p>Match dulu, debat kemudian</p>
     </div>
     <div class="footer-links">
       <a href="/panduan">Aturan & privasi</a><a href="/admin"
         >Dashboard admin <ArrowRight size={13} /></a
       >
     </div>
-    <span>© {new Date().getFullYear()} Callbate</span>
+    <span>© {new Date().getFullYear()} debatly.</span>
   </footer>
 </div>
 <JoinDialog topic={selected} bind:open={joinOpen} />

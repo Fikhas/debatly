@@ -33,7 +33,7 @@
 </script>
 
 <svelte:head
-  ><title>Reset kata sandi · Callbate</title><meta name="robots" content="noindex" /></svelte:head
+  ><title>Reset kata sandi · debatly.</title><meta name="robots" content="noindex" /></svelte:head
 >
 <main class="reset-page">
   <Logo />

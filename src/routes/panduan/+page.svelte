@@ -13,16 +13,16 @@
 </script>
 
 <svelte:head
-  ><title>Aturan & privasi · Callbate</title><meta
+  ><title>Aturan & privasi · debatly.</title><meta
     name="description"
-    content="Panduan berdiskusi dengan respek, keamanan panggilan, dan penjelasan privasi data di Callbate."
+    content="Panduan berdiskusi dengan respek, keamanan panggilan, dan penjelasan privasi data di debatly.."
   /></svelte:head
 >
 <header class="site-header container">
   <Logo /><a class="button secondary small" href="/"><ArrowLeft size={15} /> Kembali</a>
 </header>
 <main class="guide container">
-  <span class="eyebrow orange">BEDA SUARA, TETAP SETARA</span>
+  <span class="eyebrow orange">MATCH DULU, DEBAT KEMUDIAN</span>
   <h1>Ruang debat yang<br />nyaman dimulai dari kita.</h1>
   <p class="intro">
     Tujuan kita bukan selalu mengubah pikiran orang lain. Kadang, cukup memahami mengapa mereka
@@ -51,9 +51,9 @@
       <VideoOff size={27} />
       <h2>Kendali ada di tanganmu.</h2>
       <p>
-        Kamera mati secara default. Gunakan mute, Next, atau Stop / Exit kapan pun kamu perlu.
-        Jangan merekam, mengambil tangkapan layar, atau menyebarkan percakapan tanpa persetujuan
-        semua peserta.
+        Diskusi berlangsung melalui suara. Gunakan mute, Next, atau Stop / Exit kapan pun kamu
+        perlu. Jangan merekam, mengambil tangkapan layar, atau menyebarkan percakapan tanpa
+        persetujuan semua peserta.
       </p>
     </section>
     <section>
@@ -103,7 +103,7 @@
   </div>
 </main>
 <footer class="site-footer container">
-  <Logo small /><span>© {new Date().getFullYear()} Callbate · Beda suara, tetap setara.</span>
+  <Logo small /><span>© {new Date().getFullYear()} debatly. · Match dulu, debat kemudian</span>
 </footer>
 
 <style>

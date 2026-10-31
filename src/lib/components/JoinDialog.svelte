@@ -1,16 +1,7 @@
 <script lang="ts">
   import { Dialog } from 'bits-ui';
   import { goto } from '$app/navigation';
-  import {
-    ArrowRight,
-    Check,
-    Mic,
-    ShieldCheck,
-    ThumbsDown,
-    ThumbsUp,
-    VideoOff,
-    X
-  } from '@lucide/svelte';
+  import { ArrowRight, Check, Mic, ShieldCheck, ThumbsDown, ThumbsUp, X } from '@lucide/svelte';
   import { configured } from '#lib/supabase.ts';
   import type { Side, Topic } from '#lib/types.ts';
   let { topic, open = $bindable(false) }: { topic: Topic | null; open?: boolean } = $props();
@@ -59,9 +50,7 @@
         >
       </div>
       <div class="join-notes">
-        <span><Mic size={16} /> Obrolan lewat suara</span><span
-          ><VideoOff size={16} /> Kamera opsional</span
-        >
+        <span><Mic size={16} /> Obrolan lewat suara</span>
       </div>
       <label class="consent"
         ><input type="checkbox" bind:checked={agreed} /><span
@@ -78,7 +67,7 @@
         >{configured ? 'Cari lawan bicara' : 'Coba ruang debat'}<ArrowRight size={18} /></button
       >
       <p class="modal-footnote">
-        <ShieldCheck size={14} /> Tanpa nama asli. Tanpa kewajiban menyalakan kamera.
+        <ShieldCheck size={14} /> Tanpa nama asli. Diskusi sepenuhnya lewat suara.
       </p>
     </Dialog.Content>
   </Dialog.Portal>
